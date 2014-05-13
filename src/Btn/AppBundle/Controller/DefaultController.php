@@ -3,25 +3,17 @@
 namespace Btn\AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 
 class DefaultController extends BaseController
 {
     /**
      * @Route("/{location}", defaults={"location" = "bitnoise office"}, name="homepage")
+     * @Template
      **/
     public function indexAction($location)
     {
-        /*
-            $engine = $this->container->get('templating');
-            $content = $engine->render('AcmeArticleBundle:Article:index.html.twig');
-
-            return new Response($content);
-        */
-        return $this->render(
-            'BtnAppBundle:Default:index.html.twig',
-            ['location' => $location]
-            //could be compact("location")
-        );
+        return ['location' => $location];
     }
 }

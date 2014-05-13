@@ -1,1 +1,10 @@
-Hello world from {{ location }}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="starter-template">
+            <h1>Hello world from {{ location }}</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, deleniti, impedit possimus iste consectetur voluptatibus libero dignissimos asperiores architecto provident rem ducimus veniam minima odio mollitia quos magni repellat ut!</p>
+        </div>
+    </div>
+{% endblock %}
