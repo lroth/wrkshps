@@ -12,6 +12,12 @@ class DefaultController extends BaseController
      **/
     public function indexAction($location)
     {
+        /*
+            $engine = $this->container->get('templating');
+            $content = $engine->render('AcmeArticleBundle:Article:index.html.twig');
+
+            return new Response($content);
+        */
         return $this->render(
             'BtnAppBundle:Default:index.html.twig',
             ['location' => $location]
