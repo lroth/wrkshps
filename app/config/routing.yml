@@ -1,3 +1,8 @@
+# btn_app:
+#     resource: "@BtnAppBundle/Resources/config/routing.yml"
+#     prefix:   /
+
 btn_app:
-    resource: "@BtnAppBundle/Resources/config/routing.yml"
+    resource: "@BtnAppBundle/Controller/"
+    type:     annotation
     prefix:   /

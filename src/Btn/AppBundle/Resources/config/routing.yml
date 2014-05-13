@@ -1,3 +1,0 @@
-btn_app_homepage:
-    pattern:  /
-    defaults: { _controller: BtnAppBundle:Default:index }
