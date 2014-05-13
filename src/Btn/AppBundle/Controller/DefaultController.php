@@ -2,12 +2,12 @@
 
 namespace Btn\AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class DefaultController
 {
     public function indexAction()
     {
-        return $this->render('BtnAppBundle:Default:index.html.twig');
+        return new Response('Hello world');
     }
 }

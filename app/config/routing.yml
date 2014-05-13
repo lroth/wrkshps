@@ -1,7 +1,3 @@
 btn_app:
     resource: "@BtnAppBundle/Resources/config/routing.yml"
     prefix:   /
-
-homepage:
-    path:      /
-    defaults:  { _controller: BtnAppBundle:Default:index }
