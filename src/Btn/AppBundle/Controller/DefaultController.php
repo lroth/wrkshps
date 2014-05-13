@@ -2,21 +2,20 @@
 
 namespace Btn\AppBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 
-class DefaultController
+class DefaultController extends BaseController
 {
     /**
-     * @Route("/index", defaults={"location" = "bitnoise office from /index"})
-     * @Route("/{location}", defaults={"location" = "bitnoise office from /"}, name="homepage")
-     * @Method("GET")
+     * @Route("/{location}", defaults={"location" = "bitnoise office"}, name="homepage")
      **/
     public function indexAction($location)
     {
-
-        return new Response('Hello world from ' . $location);
+        return $this->render(
+            'BtnAppBundle:Default:index.html.twig',
+            ['location' => $location]
+            //could be compact("location")
+        );
     }
 }
