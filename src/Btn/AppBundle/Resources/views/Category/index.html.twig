@@ -1,20 +1,10 @@
-<h1>Categories</h1>
+<h1>Categories {{ categories|length > 0 ? '(' ~ categories|length ~ ')' }}</h1>
 <hr/>
 <ul class="list-group">
-  <li class="list-group-item">
-    <span class="badge">14</span>
-    <a href="#">Action</a>
-  </li>
-  <li class="list-group-item">
-    <span class="badge">4</span>
-    <a href="#">RPG</a>
-  </li>
-  <li class="list-group-item">
-    <span class="badge">12</span>
-    <a href="#">Sport</a>
-  </li>
-  <li class="list-group-item">
-    <span class="badge">6</span>
-    <a href="#">Kids</a>
-  </li>
+    {% for category in categories %}
+      <li class="list-group-item">
+        <span class="badge">id: {{ category.id }}</span>
+        <a href="#">{{ category.name }}</a>
+      </li>
+    {% endfor %}
 </ul>
