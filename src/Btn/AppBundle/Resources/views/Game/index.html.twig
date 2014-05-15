@@ -4,8 +4,8 @@
     <h1>Games</h1>
     <hr />
 
-    {% for game in 1..2 %}
-        {% include 'BtnAppBundle:Game:_game.html.twig' with {'counter': loop.index } only %}
+    {% for game in games %}
+        {% include 'BtnAppBundle:Game:_game.html.twig' %}
     {% else %}
         <p>Go and add first game</p>
     {% endfor %}

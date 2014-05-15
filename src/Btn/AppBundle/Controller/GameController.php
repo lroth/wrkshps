@@ -17,16 +17,20 @@ class GameController extends BaseController
      **/
     public function indexAction()
     {
-        return [];
+        $games = $this->getDoctrine()
+            ->getRepository('BtnAppBundle:Game')
+            ->findAll();
+
+        return ['games' => $games];
     }
 
     /**
      * @Route("/show/{id}", name="game_show")
      * @Template
      **/
-    public function showAction()
+    public function showAction(Game $game)
     {
-        return [];
+        return ['game' => $game];
     }
 
     /**
