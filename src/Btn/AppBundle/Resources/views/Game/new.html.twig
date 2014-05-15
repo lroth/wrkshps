@@ -1,0 +1,50 @@
+{% extends 'BtnAppBundle::layout_full.html.twig' %}
+
+{% block content %}
+    <h1>Add new game</h1>
+    <hr />
+    <form role="form">
+      <div class="form-group has-error">
+        <div class="alert alert-danger">Name is required</div>
+        <label class="control-label">Name</label>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Developer</label>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Platforms</label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="inlineCheckbox1" value="option1"> PS3
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="inlineCheckbox2" value="option2"> PS4
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="inlineCheckbox3" value="option3"> PS VITA
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Released at</label>
+        <input type="text" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <hr />
+    <a href="#" class="btn btn-default">&laquo; Back to list</a>
+{% endblock %}
