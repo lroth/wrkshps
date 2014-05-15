@@ -8,6 +8,9 @@
         <a href="{{ path('game_show', {'id': game.id}) }}">Read more</a>
     </div>
     <div class="panel-footer">
-        Category: {{ game.category.name }}, Platforms: PS4, PS3
+        Category: {{ game.category.name }} | Platforms:
+        {% for platform in game.platforms %}
+            {{ platform.name }} {% if not loop.last %},{% endif %}
+        {% endfor %}
     </div>
 </div>

@@ -3,6 +3,7 @@
 namespace Btn\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Game
@@ -55,6 +56,15 @@ class Game
      */
     private $releasedAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Platform", inversedBy="games")
+     * @ORM\JoinTable(name="game_platform")
+     */
+    private $platforms;
+
+    public function __construct() {
+        $this->platforms = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -174,10 +184,43 @@ class Game
     /**
      * Get category
      *
-     * @return \Btn\AppBundle\Entity\Category 
+     * @return \Btn\AppBundle\Entity\Category
      */
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add platforms
+     *
+     * @param \Btn\AppBundle\Entity\Platform $platforms
+     * @return Game
+     */
+    public function addPlatform(\Btn\AppBundle\Entity\Platform $platforms)
+    {
+        $this->platforms[] = $platforms;
+
+        return $this;
+    }
+
+    /**
+     * Remove platforms
+     *
+     * @param \Btn\AppBundle\Entity\Platform $platforms
+     */
+    public function removePlatform(\Btn\AppBundle\Entity\Platform $platforms)
+    {
+        $this->platforms->removeElement($platforms);
+    }
+
+    /**
+     * Get platforms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlatforms()
+    {
+        return $this->platforms;
     }
 }

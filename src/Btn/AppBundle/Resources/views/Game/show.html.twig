@@ -5,7 +5,10 @@
 {% block content %}
     <h1>{{ game.name }}</h1>
     <hr />
-    {{ game.developer }} | {{ game.releasedAt|date('d-m-Y') }} | PS4, PS3, PS VITA
+        {{ game.developer }} | {{ game.releasedAt|date('d-m-Y') }} |
+        {% for platform in game.platforms %}
+            {{ platform.name }} {% if not loop.last %},{% endif %}
+        {% endfor %}
     <hr />
     <p>{{ game.description }}</p>
 

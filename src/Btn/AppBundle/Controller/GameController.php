@@ -75,4 +75,27 @@ class GameController extends BaseController
 
         return new Response('games created');
     }
+
+    /**
+     * @Route("/add_platforms_to_games")
+     **/
+    public function fillGamesWithPlatformsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $games     = $this->getDoctrine()->getRepository('BtnAppBundle:Game')->findAll();
+        $platforms = $this->getDoctrine()->getRepository('BtnAppBundle:Platform')->findAll();
+
+        foreach ($games as $game) {
+            foreach ($platforms as $platform) {
+                $game->addPlatform($platform);
+
+                $em->persist($game);
+            }
+        }
+
+        // save to db
+        $em->flush();
+
+        return new Response('games saved');
+    }
 }
