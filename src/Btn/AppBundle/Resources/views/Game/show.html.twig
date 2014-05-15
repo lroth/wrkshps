@@ -1,5 +1,7 @@
 {% extends 'BtnAppBundle::layout.html.twig' %}
 
+{% block title %}{{ parent() }} - Infamous{% endblock %}
+
 {% block content %}
     <h1>Infamous</h1>
     <hr />
@@ -7,5 +9,5 @@
     <hr />
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet voluptas illum! Reprehenderit, ut quae labore tempora. Corrupti, veniam, nulla quo libero ipsum odit nisi ipsa laudantium nam eos earum.</p>
 
-    <a href="#" class="btn btn-default">&laquo; Back to list</a>
+    <a href="{{ path('games_list') }}" class="btn btn-default">&laquo; Back to list</a>
 {% endblock %}

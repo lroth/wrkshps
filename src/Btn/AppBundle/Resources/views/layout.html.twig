@@ -5,7 +5,8 @@
     <div class="row">
         <div class="col-md-4">
             {% block sidebar %}
-                {% include 'BtnAppBundle::_sidebar.html.twig' %}
+                {#{% include 'BtnAppBundle::_sidebar.html.twig' %}#}
+                {{ render(controller('BtnAppBundle:Category:index')) }}
             {% endblock %}
         </div>
         <div class="col-md-8">

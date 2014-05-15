@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>
+        <a href="#">{{ 'Infamous'|upper }} {{ counter }}</a></h4>
+        Ubisoft | 22-05-2004
+    </div>
+    <div class="panel-body">
+        {% for letter in 'a'..'z' %}
+            {{ letter }}
+        {% endfor %}
+      <a href="{{ path('game_show', {'id': counter}) }}">Read more</a>
+    </div>
+    <div class="panel-footer">Platforms: PS4, PS3</div>
+</div>

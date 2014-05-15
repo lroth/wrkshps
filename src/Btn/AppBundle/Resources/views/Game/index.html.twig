@@ -4,31 +4,23 @@
     <h1>Games</h1>
     <hr />
 
-    <div class="panel panel-default">
-      <div class="panel-heading"><h4><a href="#">Infamous 2</a></h4> Ubisoft | 22-05-2004</div>
-      <div class="panel-body">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, cumque, voluptas sunt delectus mollitia reprehenderit ad impedit illum cupiditate magnam doloremque error enim a aperiam quidem iste sed sapiente exercitationem.
-        <a href="#">Read more</a>
-      </div>
-      <div class="panel-footer">Platforms: PS4, PS3</div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading"><h4><a href="#">Infamous 2</a></h4> Ubisoft | 22-05-2004</div>
-      <div class="panel-body">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, cumque, voluptas sunt delectus mollitia reprehenderit ad impedit illum cupiditate magnam doloremque error enim a aperiam quidem iste sed sapiente exercitationem.
-        <a href="#">Read more</a>
-      </div>
-      <div class="panel-footer">Platforms: PS4, PS3</div>
-    </div>
+    {% for game in 1..2 %}
+        {% include 'BtnAppBundle:Game:_game.html.twig' with {'counter': loop.index } only %}
+    {% else %}
+        <p>Go and add first game</p>
+    {% endfor %}
 
     <ul class="pagination">
-      <li><a href="#">&laquo;</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">&raquo;</a></li>
+        {% for page in 0..6 %}
+            <li><a href="#">
+                {% if loop.first %}
+                    &laquo;
+                {% elseif loop.last %}
+                    &raquo;
+                {% else %}
+                    {{ page }}
+                {% endif %}
+            </a></li>
+        {% endfor %}
     </ul>
 {% endblock %}
