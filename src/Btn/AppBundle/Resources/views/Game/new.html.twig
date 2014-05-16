@@ -3,6 +3,8 @@
 {% block content %}
     <h1>Add new game</h1>
     <hr />
+      {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <hr />
     <form role="form">
       <div class="form-group has-error">
         <div class="alert alert-danger">Name is required</div>

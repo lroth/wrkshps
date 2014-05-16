@@ -4,6 +4,7 @@ namespace Btn\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Game
@@ -24,19 +25,26 @@ class Game
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "255",
+     *      minMessage = "Your name must be at least {{ limit }} chars",
+     *      maxMessage = "Your name cannot be longer than {{ limit }} chars"
+     * )
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="games")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -45,13 +53,15 @@ class Game
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="developer", type="string", length=255)
      */
     private $developer;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
      * @ORM\Column(name="released_at", type="datetime")
      */
     private $releasedAt;

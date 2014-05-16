@@ -33,6 +33,11 @@ class Platform
         $this->games = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * Get id
      *
@@ -92,7 +97,7 @@ class Platform
     /**
      * Get games
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGames()
     {

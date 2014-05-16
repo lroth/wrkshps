@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Btn\AppBundle\Entity\Game;
 
 class GameController extends BaseController
@@ -37,9 +38,32 @@ class GameController extends BaseController
      * @Route("/new", name="game_new")
      * @Template
      **/
-    public function newAction()
+    public function newAction(Request $request)
     {
-        return [];
+        $game = new Game();
+
+        $form = $this->createFormBuilder($game)
+            ->add('name',        'text')
+            ->add('developer',   'text')
+            ->add('description', 'textarea')
+            ->add('category',    null)
+            ->add('platforms',   null)
+            ->add('releasedAt',  null)
+            ->add('save',        'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // $game = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($game);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('games_list'));
+        }
+
+        return ['form' => $form->createView()];
     }
 
     /**
