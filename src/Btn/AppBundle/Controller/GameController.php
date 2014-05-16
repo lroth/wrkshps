@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Btn\AppBundle\Entity\Game;
+use Btn\AppBundle\Form\GameType;
 
 class GameController extends BaseController
 {
@@ -40,23 +41,13 @@ class GameController extends BaseController
      **/
     public function newAction(Request $request)
     {
-        $game = new Game();
-
-        $form = $this->createFormBuilder($game)
-            ->add('name',        'text')
-            ->add('developer',   'text')
-            ->add('description', 'textarea')
-            ->add('category',    null)
-            ->add('platforms',   null)
-            ->add('releasedAt',  null)
-            ->add('save',        'submit')
-            ->getForm();
+        $form = $this->createForm(new GameType());
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // $game = $form->getData();
-            $em = $this->getDoctrine()->getManager();
+            $game = $form->getData();
+            $em   = $this->getDoctrine()->getManager();
             $em->persist($game);
             $em->flush();
 
