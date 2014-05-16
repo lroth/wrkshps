@@ -51,6 +51,12 @@ class GameController extends BaseController
             $em->persist($game);
             $em->flush();
 
+            // flash message
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                'Your changes were saved!'
+            );
+
             return $this->redirect($this->generateUrl('games_list'));
         }
 
