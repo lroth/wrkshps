@@ -6,9 +6,10 @@ parameters:
     database_user:     root
     database_password: ~
 
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
+    mailer_transport:  gmail
+    mailer_host:       ~
+    mailer_port:       false
+    mailer_user:       dev.bitnoi.se@gmail.com
     mailer_password:   ~
 
     locale:            en

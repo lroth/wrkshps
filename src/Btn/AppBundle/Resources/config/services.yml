@@ -1,7 +1,12 @@
 parameters:
-#    btn_app.example.class: Btn\AppBundle\Example
+   btn_app.game_manager.class: Btn\AppBundle\Service\GameManager
 
 services:
-#    btn_app.example:
-#        class: %btn_app.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+   btn_app.game:
+       class: %btn_app.game_manager.class%
+       arguments:
+            - @mailer
+            - @doctrine.orm.entity_manager
+            - %admin_email%
+            - @templating
+            - @session

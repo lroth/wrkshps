@@ -46,16 +46,9 @@ class GameController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $game = $form->getData();
-            $em   = $this->getDoctrine()->getManager();
-            $em->persist($game);
-            $em->flush();
 
-            // flash message
-            $this->get('session')->getFlashBag()->add(
-                'notice',
-                'Your changes were saved!'
-            );
+            //put all logic in the service
+            $this->get('btn_app.game')->createGame($form->getData());
 
             return $this->redirect($this->generateUrl('games_list'));
         }
