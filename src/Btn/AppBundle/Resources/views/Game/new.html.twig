@@ -3,43 +3,17 @@
 {% block content %}
     <h1>Add new game</h1>
     <hr />
-      {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+      <form action="{{ path('game_new') }}" method="post" accept-charset="utf-8" novalidate>
           {{ form_errors(form) }}
-          <div class="form-group">
-              {{ form_label(form.name) }}
-              {{ form_errors(form.name) }}
-              {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-          </div>
-          <div class="form-group">
-              {{ form_label(form.developer) }}
-              {{ form_errors(form.developer) }}
-              {{ form_widget(form.developer, {'attr': {'class': 'form-control'}}) }}
-          </div>
-          <div class="form-group">
-              {{ form_label(form.description) }}
-              {{ form_errors(form.description) }}
-              {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-          </div>
-          <div class="form-group">
-              {{ form_label(form.category) }}
-              {{ form_errors(form.category) }}
-              {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
-          </div>
-          <div class="form-group">
-              {{ form_label(form.platforms) }}
-              {{ form_errors(form.platforms) }}
-              {{ form_widget(form.platforms, {'attr': {'class': 'form-control'}}) }}
-          </div>
-          <div class="form-group">
-              {{ form_label(form.releasedAt) }}
-              {{ form_errors(form.releasedAt) }}
-              {{ form_widget(form.releasedAt.date.year, {'attr': {'class': 'form-control'}}) }}
-              {{ form_widget(form.releasedAt.date.month, {'attr': {'class': 'form-control'}}) }}
-              {{ form_widget(form.releasedAt.date.day, {'attr': {'class': 'form-control'}}) }}
-              {{ form_widget(form.releasedAt.time.hour, {'attr': {'class': 'form-control'}}) }}
-              {{ form_widget(form.releasedAt.time.minute, {'attr': {'class': 'form-control'}}) }}
-          </div>
-      {{ form_end(form) }}
+          {{ form_row(form.name) }}
+          {{ form_row(form.description) }}
+          {{ form_row(form.developer) }}
+          {{ form_row(form.category) }}
+          {{ form_row(form.platforms) }}
+          {{ form_row(form.releasedAt) }}
+          {{ form_rest(form) }}
+          <button type="submit" class="btn btn-primary">Save</button>
+      </form>
     <hr />
     {#
     <form role="form">
