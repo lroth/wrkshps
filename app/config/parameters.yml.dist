@@ -14,3 +14,5 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    admin_email:       'lukasz.roth@gmail.com'
